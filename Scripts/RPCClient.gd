@@ -6,13 +6,13 @@ var players_in_map = []
 onready var label = get_tree().get_root().get_node("World/Label")
 onready var playerNode = get_tree().get_root().get_node("World/Player")
 onready var playersOnlineNode = get_tree().get_root().get_node("World/PlayersOnline")
-onready var joystickNode = get_tree().get_root().get_node("World/Joystick/JoystickButtons")
+onready var dPad = get_tree().get_root().get_node("World/DPad/Control")
 
 var example_script = load("res://Scripts/example.gd").new()
 
 #func _ready():
 #	if OS.get_name() == "Windows":
-#		joystickNode.hide()
+#		dPad.hide()
 
 func send_hello():
 	var msg = "Hola server desde el cliente"
@@ -40,17 +40,17 @@ func set_players_position(player):
 	
 func set_players_state(position, otherPlayer, otherPlayerNode):
 	if position.x < otherPlayer["position"].x:
-#		otherPlayerNode.transition_to(otherPlayerNode.RIGHT)
-		otherPlayerNode.get_node("AnimationPlayer").play("Right")
+		otherPlayerNode.transition_to('Right')
+#		otherPlayerNode.get_node("AnimationPlayer").play("Right")
 	elif position.x > otherPlayer["position"].x:
-#		otherPlayerNode.transition_to(otherPlayerNode.LEFT)
-		otherPlayerNode.get_node("AnimationPlayer").play("Left")
+		otherPlayerNode.transition_to('LEFT')
+#		otherPlayerNode.get_node("AnimationPlayer").play("Left")
 	elif position.y > otherPlayer["position"].y:
-#		otherPlayerNode.transition_to(otherPlayerNode.UP)
-		otherPlayerNode.get_node("AnimationPlayer").play("Up")
+		otherPlayerNode.transition_to('UP')
+#		otherPlayerNode.get_node("AnimationPlayer").play("Up")
 	elif position.y < otherPlayer["position"].y:
-#		otherPlayerNode.transition_to(otherPlayerNode.DOWN)
-		otherPlayerNode.get_node("AnimationPlayer").play("Down")
+		otherPlayerNode.transition_to('DOWN')
+#		otherPlayerNode.get_node("AnimationPlayer").play("Down")
 	else:
 		otherPlayerNode.get_node("Sprite").set_frame(0)
 		otherPlayerNode.get_node("AnimationPlayer").stop()

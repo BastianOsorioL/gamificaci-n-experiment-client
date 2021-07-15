@@ -26,8 +26,3 @@ func _on_Button_pressed():
 	var label = get_tree().get_root().get_node("World/Label")
 	example_script.saludo('Bastian')
 	example_script.change_label(label)
-
-
-func _on_TouchScreenButton_pressed():
-	var label = get_tree().get_root().get_node("World/Label")
-	example_script.change_label(label)

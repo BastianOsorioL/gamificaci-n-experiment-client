@@ -1,14 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/RPCClient.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/World.gd" type="Script" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
-[ext_resource path="res://sprites/joystick/up-arrow.png" type="Texture" id=5]
-[ext_resource path="res://sprites/joystick/left-arrow.png" type="Texture" id=6]
-[ext_resource path="res://sprites/joystick/right-arrow.png" type="Texture" id=7]
-[ext_resource path="res://sprites/joystick/down-arrow.png" type="Texture" id=8]
-[ext_resource path="res://Scripts/Joystick.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/DPad.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 33, 32.5248 )
@@ -54,38 +50,13 @@ texture = ExtResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Roca"]
 shape = SubResource( 1 )
 
-[node name="Joystick" type="CanvasLayer" parent="."]
-script = ExtResource( 9 )
+[node name="DPad" parent="." instance=ExtResource( 5 )]
 
-[node name="JoystickButtons" type="Control" parent="Joystick"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Up" type="TouchScreenButton" parent="Joystick/JoystickButtons"]
-position = Vector2( 150, 340 )
-normal = ExtResource( 5 )
-visibility_mode = 1
-
-[node name="Right" type="TouchScreenButton" parent="Joystick/JoystickButtons"]
-position = Vector2( 240, 420 )
-normal = ExtResource( 7 )
-
-[node name="Left" type="TouchScreenButton" parent="Joystick/JoystickButtons"]
-position = Vector2( 60, 420 )
-normal = ExtResource( 6 )
-
-[node name="Down" type="TouchScreenButton" parent="Joystick/JoystickButtons"]
-position = Vector2( 150, 500 )
-normal = ExtResource( 8 )
+[node name="Control" parent="DPad" index="0"]
+margin_left = 127.0
+margin_top = 501.0
+margin_right = 167.0
+margin_bottom = 541.0
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="Joystick/JoystickButtons/Up" to="Joystick" method="_on_Up_pressed"]
-[connection signal="released" from="Joystick/JoystickButtons/Up" to="Joystick" method="_on_Up_released"]
-[connection signal="pressed" from="Joystick/JoystickButtons/Right" to="Joystick" method="_on_Right_pressed"]
-[connection signal="released" from="Joystick/JoystickButtons/Right" to="Joystick" method="_on_Right_released"]
-[connection signal="pressed" from="Joystick/JoystickButtons/Left" to="Joystick" method="_on_Left_pressed"]
-[connection signal="released" from="Joystick/JoystickButtons/Left" to="Joystick" method="_on_Left_released"]
-[connection signal="pressed" from="Joystick/JoystickButtons/Down" to="Joystick" method="_on_Down_pressed"]
-[connection signal="released" from="Joystick/JoystickButtons/Down" to="Joystick" method="_on_Down_released"]
+
+[editable path="DPad"]

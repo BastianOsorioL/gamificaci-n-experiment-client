@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sprites/joystick/up-arrow.png" type="Texture" id=1]
+[ext_resource path="res://sprites/joystick/down-arrow.png" type="Texture" id=2]
+[ext_resource path="res://sprites/joystick/left-arrow.png" type="Texture" id=3]
+[ext_resource path="res://sprites/joystick/right-arrow.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Dpad.gd" type="Script" id=5]
+
+[node name="DPad" type="CanvasLayer"]
+script = ExtResource( 5 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Down" type="TouchScreenButton" parent="Control"]
+scale = Vector2( 0.75, 0.75 )
+normal = ExtResource( 2 )
+
+[node name="Right" type="TouchScreenButton" parent="Control"]
+position = Vector2( 90, -80 )
+scale = Vector2( 0.75, 0.75 )
+normal = ExtResource( 4 )
+
+[node name="Left" type="TouchScreenButton" parent="Control"]
+position = Vector2( -90, -80 )
+scale = Vector2( 0.75, 0.75 )
+normal = ExtResource( 3 )
+
+[node name="Up" type="TouchScreenButton" parent="Control"]
+position = Vector2( 0, -160 )
+scale = Vector2( 0.75, 0.75 )
+normal = ExtResource( 1 )
+[connection signal="pressed" from="Control/Down" to="." method="_on_Down_pressed"]
+[connection signal="released" from="Control/Down" to="." method="_on_Down_released"]
+[connection signal="pressed" from="Control/Right" to="." method="_on_Right_pressed"]
+[connection signal="released" from="Control/Right" to="." method="_on_Right_released"]
+[connection signal="pressed" from="Control/Left" to="." method="_on_Left_pressed"]
+[connection signal="released" from="Control/Left" to="." method="_on_Left_released"]
+[connection signal="pressed" from="Control/Up" to="." method="_on_Up_pressed"]
+[connection signal="released" from="Control/Up" to="." method="_on_Up_released"]
