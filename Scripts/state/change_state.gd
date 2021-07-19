@@ -22,7 +22,7 @@ func state_to_idle(state, velocity, nodePlayer):
 		
 func up_to_state(state, velocity, nodePlayer):
 	if state == 'UP' and velocity.x > 0:
-		nodePlayer.transition_to('RIGHT')
+		print('up_to_state')
 	elif state == 'UP' and velocity.x < 0:
 		nodePlayer.transition_to('LEFT')
 		

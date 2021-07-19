@@ -6,7 +6,6 @@
 [ext_resource path="res://sprites/hBack.png" type="Texture" id=4]
 [ext_resource path="res://sprites/hLeft.png" type="Texture" id=5]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "Down"
 length = 0.3

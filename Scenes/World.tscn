@@ -13,7 +13,7 @@ extents = Vector2( 33, 32.5248 )
 script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 491, 274 )
+position = Vector2( 480, 260 )
 
 [node name="RPCClient" parent="." instance=ExtResource( 2 )]
 

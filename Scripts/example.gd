@@ -12,6 +12,7 @@ func loadCharacter(newPlayer, nodePlayersOnline):
 	var newCharacter = preload("res://Scenes/Player.tscn").instance()
 	newCharacter.name = newPlayer["group"]
 	newCharacter.remove_from_group("Players")
+	newCharacter.add_to_group("OnlinePlayers")
 	newCharacter.set_collision_layer_bit(1, true)	
 	newCharacter.set_collision_layer_bit(2, true)
 	newCharacter.add_to_group(newPlayer["group"])

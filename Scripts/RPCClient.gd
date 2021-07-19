@@ -10,10 +10,6 @@ onready var dPad = get_tree().get_root().get_node("World/DPad/Control")
 
 var example_script = load("res://Scripts/example.gd").new()
 
-#func _ready():
-#	if OS.get_name() == "Windows":
-#		dPad.hide()
-
 func send_hello():
 	var msg = "Hola server desde el cliente"
 	rpc_id(1, "receive_hello", msg)
@@ -21,16 +17,6 @@ func send_hello():
 func send_move():
 	if players_in_map.size() > 0:
 		rpc_unreliable_id(1, "receiverPositionPlayer", ownPlayerId, playerNode.get_position())
-	
-#func loadCharacter(newPlayer):
-#	var newCharacter = preload("res://Player.tscn").instance()
-#	newCharacter.name = newPlayer["group"]
-#	newCharacter.remove_from_group("Players")
-#	newCharacter.set_collision_layer_bit(1, true)	
-#	newCharacter.set_collision_layer_bit(2, true)
-#	newCharacter.add_to_group(newPlayer["group"])
-#	newCharacter.set_position(newPlayer["position"])
-#	get_tree().get_root().get_node("World/PlayersOnline").add_child(newCharacter)
 	
 func set_players_position(player):
 	var otherPlayerNode = get_tree().get_root().get_node("World/PlayersOnline/player" + str(player["playerId"]))
@@ -40,17 +26,13 @@ func set_players_position(player):
 	
 func set_players_state(position, otherPlayer, otherPlayerNode):
 	if position.x < otherPlayer["position"].x:
-		otherPlayerNode.transition_to('Right')
-#		otherPlayerNode.get_node("AnimationPlayer").play("Right")
+		otherPlayerNode.get_node("AnimationPlayer").play("Right")
 	elif position.x > otherPlayer["position"].x:
-		otherPlayerNode.transition_to('LEFT')
-#		otherPlayerNode.get_node("AnimationPlayer").play("Left")
+		otherPlayerNode.get_node("AnimationPlayer").play("Left")
 	elif position.y > otherPlayer["position"].y:
-		otherPlayerNode.transition_to('UP')
-#		otherPlayerNode.get_node("AnimationPlayer").play("Up")
+		otherPlayerNode.get_node("AnimationPlayer").play("Up")
 	elif position.y < otherPlayer["position"].y:
-		otherPlayerNode.transition_to('DOWN')
-#		otherPlayerNode.get_node("AnimationPlayer").play("Down")
+		otherPlayerNode.get_node("AnimationPlayer").play("Down")
 	else:
 		otherPlayerNode.get_node("Sprite").set_frame(0)
 		otherPlayerNode.get_node("AnimationPlayer").stop()

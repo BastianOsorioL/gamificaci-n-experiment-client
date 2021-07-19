@@ -22,7 +22,6 @@ func _ready():
 func _physics_process(delta):
 	if self.is_in_group("Players"):
 		actualPosition = self.get_position()
-		print(current_animation, new_animation)
 		if state != 'IDLE':
 			current_animation = new_animation
 			$AnimationPlayer.play(current_animation)
