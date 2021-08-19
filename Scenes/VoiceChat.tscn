@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/godot-voip/scripts/voice_orchestrator.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/VoiceChat.gd" type="Script" id=2]
+
+[node name="VoiceChat" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="SpeakButton" type="Button" parent="."]
+margin_left = 6.0
+margin_top = 547.0
+margin_right = 160.0
+margin_bottom = 596.0
+text = "Hablar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VoiceOrchestrator" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[connection signal="pressed" from="SpeakButton" to="." method="_on_SpeakButton_pressed"]

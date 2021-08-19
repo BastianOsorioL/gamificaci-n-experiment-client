@@ -21,8 +21,3 @@ func _on_connection_failed():
 
 func on_connection_succeeded():
 	print("Succesfully connected")
-
-func _on_Button_pressed():
-	var label = get_tree().get_root().get_node("World/Label")
-	example_script.saludo('Bastian')
-	example_script.change_label(label)

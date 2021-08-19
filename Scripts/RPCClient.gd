@@ -1,6 +1,7 @@
 extends Node
 
 var groups = []
+var sendMsgPlayerId
 var ownPlayerId
 var players_in_map = []
 onready var label = get_tree().get_root().get_node("World/Label")
@@ -59,3 +60,13 @@ remote func receivePlayers(players):
 		if !(player["group"] in groups):
 			groups.append("player" + str(player["playerId"]))
 			example_script.loadCharacter(player, playersOnlineNode)
+			
+remote func receivePlayerIdTest(playerIdTest):
+	print(playerIdTest)
+	if playerIdTest != ownPlayerId:
+		GlobalVar.sendMsgPlayerId = playerIdTest
+	
+			
+func _on_SendIdButton_pressed():
+	var myPlayerId = ownPlayerId
+	rpc_id(1, "receivePlayerIdTest", myPlayerId)

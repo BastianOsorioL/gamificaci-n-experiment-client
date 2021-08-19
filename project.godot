@@ -8,9 +8,32 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "Network",
+"language": "GDScript",
+"path": "res://addons/godot-voip/demo/Network.gd"
+}, {
+"base": "Node",
+"class": "VoiceInstance",
+"language": "GDScript",
+"path": "res://addons/godot-voip/scripts/voice_instance.gd"
+}, {
+"base": "AudioStreamPlayer",
+"class": "VoiceMic",
+"language": "GDScript",
+"path": "res://addons/godot-voip/scripts/voice_mic.gd"
+}, {
+"base": "Node",
+"class": "VoiceOrchestrator",
+"language": "GDScript",
+"path": "res://addons/godot-voip/scripts/voice_orchestrator.gd"
+} ]
 _global_script_class_icons={
-
+"Network": "",
+"VoiceInstance": "",
+"VoiceMic": "",
+"VoiceOrchestrator": ""
 }
 
 [application]
@@ -19,10 +42,22 @@ config/name="gamificación-example-client"
 run/main_scene="res://Scenes/World.tscn"
 config/icon="res://icon.png"
 
+[audio]
+
+enable_audio_input=true
+
+[autoload]
+
+GlobalVar="*res://Scripts/globalVar.gd"
+
 [display]
 
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/godot-voip/plugin.cfg" )
 
 [input]
 

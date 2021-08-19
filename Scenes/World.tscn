@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/RPCClient.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/World.gd" type="Script" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/DPad.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/VoiceChat.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/TextChat.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 33, 32.5248 )
@@ -12,17 +14,19 @@ extents = Vector2( 33, 32.5248 )
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="TextChat" parent="." instance=ExtResource( 7 )]
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 480, 260 )
+position = Vector2( 511.748, 275.874 )
 
 [node name="RPCClient" parent="." instance=ExtResource( 2 )]
 
-[node name="Button" type="Button" parent="."]
-margin_left = 99.0
-margin_top = 159.0
-margin_right = 225.0
-margin_bottom = 214.0
-text = "Enviar un hola al server"
+[node name="SendIdButton" type="Button" parent="."]
+margin_left = 88.2404
+margin_top = 178.082
+margin_right = 248.24
+margin_bottom = 233.082
+text = "Enviar mi Id"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -53,10 +57,15 @@ shape = SubResource( 1 )
 [node name="DPad" parent="." instance=ExtResource( 5 )]
 
 [node name="Control" parent="DPad" index="0"]
+visible = false
 margin_left = 127.0
 margin_top = 501.0
 margin_right = 167.0
 margin_bottom = 541.0
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+
+[node name="VoiceChat" parent="." instance=ExtResource( 6 )]
+position = Vector2( 734.966, -534.954 )
+
+[connection signal="pressed" from="SendIdButton" to="RPCClient" method="_on_SendIdButton_pressed"]
 
 [editable path="DPad"]
